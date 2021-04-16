@@ -53,7 +53,7 @@ more information.
 [badge-release]: https://img.shields.io/packagist/v/qdequippe/mailjet-api-php.svg?style=flat-square&label=release
 [badge-license]: https://img.shields.io/packagist/l/qdequippe/mailjet-api-php.svg?style=flat-square
 [badge-php]: https://img.shields.io/packagist/php-v/qdequippe/mailjet-api-php.svg?style=flat-square
-[badge-build]: https://img.shields.io/travis/qdequippe/mailjet-api-php/main.svg?style=flat-square
+[badge-build]: https://github.com/qdequippe/mailjet-api-php/workflows/CI/badge.svg?branch=main
 [badge-coverage]: https://img.shields.io/coveralls/github/qdequippe/mailjet-api-php/main.svg?style=flat-square
 [badge-downloads]: https://img.shields.io/packagist/dt/qdequippe/mailjet-api-php.svg?style=flat-square&colorB=mediumvioletred
 
@@ -61,6 +61,6 @@ more information.
 [packagist]: https://packagist.org/packages/qdequippe/mailjet-api-php
 [license]: https://github.com/qdequippe/mailjet-api-php/blob/main/LICENSE
 [php]: https://php.net
-[build]: https://travis-ci.org/qdequippe/mailjet-api-php
+[build]: https://github.com/qdequippe/mailjet-api-php/actions/workflows/ci.yaml
 [coverage]: https://coveralls.io/r/qdequippe/mailjet-api-php?branch=main
 [downloads]: https://packagist.org/packages/qdequippe/mailjet-api-php
