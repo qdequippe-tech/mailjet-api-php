@@ -59,6 +59,11 @@ class Message
      */
     private $deduplicateCampaign;
 
+    /**
+     * @var array|null
+     */
+    private $variables;
+
     public function __construct(array $input)
     {
         $this->from = isset($input['From']) ? EmailAddress::create($input['From']) : null;
@@ -86,6 +91,7 @@ class Message
         $this->templateLanguage = $input['TemplateLanguage'] ?? null;
         $this->customCampaign = $input['CustomCampaign'] ?? null;
         $this->deduplicateCampaign = $input['DeduplicateCampaign'] ?? null;
+        $this->variables = $input['Variables'] ?? null;
     }
 
     public static function create($input): self
@@ -148,6 +154,13 @@ class Message
 
         if (null !== ($v = $this->deduplicateCampaign)) {
             $payload['DeduplicateCampaign'] = $v;
+        }
+
+        if (null !== ($v = $this->variables)) {
+            $payload['Variables'] = [];
+            foreach ($v as $key => $value) {
+                $payload['Variables'][$key] = $value;
+            }
         }
 
         return $payload;

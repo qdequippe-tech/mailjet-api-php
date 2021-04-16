@@ -15,7 +15,7 @@ class SendApiTest extends TestCase
     public function testSend(): void
     {
         $response = new MockResponse('{
-            "Messages":[{"Status":"success","To":{"Email":"john.doe@example.com","MessageUUID":"0b065db3-b585-4664-8564-f4317d3d0820","MessageID":123,"MessageHref":"https:\/\/api.mailjet.com\/v3\/message\/123"}}]
+            "Messages":[{"Status":"success","To":[{"Email":"john.doe@example.com","MessageUUID":"0b065db3-b585-4664-8564-f4317d3d0820","MessageID":123,"MessageHref":"https:\/\/api.mailjet.com\/v3\/message\/123"}]}]
         }');
 
         $client = new MockHttpClient($response);

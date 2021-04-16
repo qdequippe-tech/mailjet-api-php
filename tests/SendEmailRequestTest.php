@@ -194,4 +194,57 @@ class SendEmailRequestTest extends TestCase
         ];
         self::assertSame($expectedBody, $sendEmailRequest->requestBody());
     }
+
+    public function testRequestBodyWithVariables(): void
+    {
+        $sendEmailRequest = new SendEmailRequest([
+            'Messages' => [
+                new Message([
+                    'From' => new EmailAddress([
+                        'Email' => 'jane.doe@example.com',
+                        'Name' => 'Jane Doe',
+                    ]),
+                    'To' => [
+                        new EmailAddress([
+                            'Email' => 'john.doe@example.com',
+                            'Name' => 'John Doe',
+                        ])
+                    ],
+                    'Subject' => 'Hello World!',
+                    'TextPart' => 'Hello World!',
+                    'HTMLPart' => '<p>Hello World!</p>',
+                    'Variables' => [
+                        'key1' => 'value1',
+                        'key2' => 'value2',
+                    ]
+                ])
+            ]
+        ]);
+
+        $expectedBody = [
+            'Messages' => [
+                [
+                    'From' => [
+                        'Email' => 'jane.doe@example.com',
+                        'Name' => 'Jane Doe'
+                    ],
+                    'To' => [
+                        [
+                            'Email' => 'john.doe@example.com',
+                            'Name' => 'John Doe',
+                        ],
+                    ],
+                    'Subject' => 'Hello World!',
+                    'TextPart' => 'Hello World!',
+                    'HTMLPart' => '<p>Hello World!</p>',
+                    'Variables' => [
+                        'key1' => 'value1',
+                        'key2' => 'value2',
+                    ]
+                ]
+            ],
+        ];
+        
+        self::assertSame($expectedBody, $sendEmailRequest->requestBody());
+    }
 }
