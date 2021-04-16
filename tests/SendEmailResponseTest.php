@@ -12,7 +12,7 @@ class SendEmailResponseTest extends TestCase
     public function testGetMessages(): void
     {
         $response = new MockResponse('{
-            "Messages":[{"Status":"success","To":{"Email":"john.doe@example.com","MessageUUID":"0b065db3-b585-4664-8564-f4317d3d0820","MessageID":123,"MessageHref":"https:\/\/api.mailjet.com\/v3\/message\/123"}}]
+            "Messages":[{"Status":"success","To":[{"Email":"john.doe@example.com","MessageUUID":"0b065db3-b585-4664-8564-f4317d3d0820","MessageID":123,"MessageHref":"https:\/\/api.mailjet.com\/v3\/message\/123"}]}]
         }');
         $client = new MockHttpClient($response);
 
@@ -21,9 +21,9 @@ class SendEmailResponseTest extends TestCase
         self::assertCount(1, $sendEmailResponse->getMessages());
         $message =  $sendEmailResponse->getMessages()[0];
         self::assertSame('success', $message->getStatus());
-        self::assertSame('john.doe@example.com', $message->getTo()->getEmail());
-        self::assertSame('0b065db3-b585-4664-8564-f4317d3d0820', $message->getTo()->getUuid()->toString());
-        self::assertSame(123, $message->getTo()->getId());
-        self::assertSame('https://api.mailjet.com/v3/message/123', $message->getTo()->getHref());
+        self::assertSame('john.doe@example.com', $message->getTo()[0]->getEmail());
+        self::assertSame('0b065db3-b585-4664-8564-f4317d3d0820', $message->getTo()[0]->getUuid()->toString());
+        self::assertSame(123, $message->getTo()[0]->getId());
+        self::assertSame('https://api.mailjet.com/v3/message/123', $message->getTo()[0]->getHref());
     }
 }

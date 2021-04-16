@@ -244,7 +244,7 @@ class SendEmailRequestTest extends TestCase
                 ]
             ],
         ];
-        
+
         self::assertSame($expectedBody, $sendEmailRequest->requestBody());
     }
 }
