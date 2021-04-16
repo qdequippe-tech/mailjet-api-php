@@ -1,0 +1,31 @@
+{
+    "Messages": [
+        {
+            "Status": "success",
+            "To": [
+                {
+                    "Email": "john.doe@example.com",
+                    "MessageUUID": "0b065db3-b585-4664-8564-f4317d3d0820",
+                    "MessageID": 123,
+                    "MessageHref": "https:\/\/api.mailjet.com\/v3\/message\/123"
+                }
+            ],
+            "Cc": [
+                {
+                    "Email": "jane.doe@example.com",
+                    "MessageUUID": "a6a4b30a-7c1a-4006-8a09-3e185979fa68",
+                    "MessageID": 124,
+                    "MessageHref": "https:\/\/api.mailjet.com\/v3\/message\/124"
+                }
+            ],
+            "Bcc": [
+                {
+                    "Email": "henry.doe@example.com",
+                    "MessageUUID": "70f8d234-641e-49ba-b934-acce2d1475af",
+                    "MessageID": 125,
+                    "MessageHref": "https:\/\/api.mailjet.com\/v3\/message\/125"
+                }
+            ]
+        }
+    ]
+}

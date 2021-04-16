@@ -24,6 +24,11 @@ class MessageResponse
      */
     private $status;
 
+    /**
+     * @var Error[]|null
+     */
+    private $errors;
+
     public function __construct(array $input)
     {
         $this->status = $input['Status'] ?? null;
@@ -42,6 +47,12 @@ class MessageResponse
         if (isset($input['Bcc'])) {
             foreach ($input['Bcc'] as $item) {
                 $this->bcc[] = RecipientResponse::create($item);
+            }
+        }
+
+        if (isset($input['Errors'])) {
+            foreach ($input['Errors'] as $item) {
+                $this->errors[] = Error::create($item);
             }
         }
     }
@@ -78,5 +89,13 @@ class MessageResponse
     public function getBcc(): ?array
     {
         return $this->bcc;
+    }
+
+    /**
+     * @return Error[]|null
+     */
+    public function getErrors(): ?array
+    {
+        return $this->errors;
     }
 }

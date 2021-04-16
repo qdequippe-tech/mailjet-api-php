@@ -14,12 +14,8 @@ class SendApiTest extends TestCase
 {
     public function testSend(): void
     {
-        $response = new MockResponse('{
-            "Messages":[{"Status":"success","To":[{"Email":"john.doe@example.com","MessageUUID":"0b065db3-b585-4664-8564-f4317d3d0820","MessageID":123,"MessageHref":"https:\/\/api.mailjet.com\/v3\/message\/123"}]}]
-        }');
-
+        $response = new MockResponse(file_get_contents(__DIR__.'/response_success.json'));
         $client = new MockHttpClient($response);
-
         $sendApi = new SendApi(null, null, $client);
 
         $sendEmailRequest = new SendEmailRequest([
@@ -39,6 +35,47 @@ class SendApiTest extends TestCase
                 ])
             ]
         ]);
+
+        $sendEmailResponse = $sendApi->send($sendEmailRequest);
+
+        self::assertNotNull($sendEmailResponse->getMessages());
+        $message = $sendEmailResponse->getMessages()[0];
+
+        self::assertSame('success', $message->getStatus());
+    }
+
+    public function testSendWithoutClient(): void
+    {
+        $response = new MockResponse(file_get_contents(__DIR__.'/response_success.json'));
+        $client = new MockHttpClient($response);
+        $sendApi = new SendApi();
+        $sendApi->authenticate([
+            'publicApiKey' => 'xxx',
+            'privateApiKey' => 'xxx',
+        ]);
+
+        $sendEmailRequest = new SendEmailRequest([
+            'Messages' => [
+                new Message([
+                    'From' => new EmailAddress([
+                        'Email' => 'jane.doe@example.com',
+                        'Name' => 'Jane Doe',
+                    ]),
+                    'To' => new EmailAddress([
+                        'Email' => 'john.doe@example.com',
+                        'Name' => 'John Doe',
+                    ]),
+                    'Subject' => 'Hello World!',
+                    'TextPart' => 'Hello World!',
+                    'HTMLPart' => '<p>Hello World!</p>'
+                ])
+            ]
+        ]);
+
+        // Workaround to set mocked http client
+        (function () use ($client) {
+            return $this->httpClient = $client;
+        })->call($sendApi);
 
         $sendEmailResponse = $sendApi->send($sendEmailRequest);
 

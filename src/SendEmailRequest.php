@@ -9,6 +9,16 @@ final class SendEmailRequest
      */
     private $messages;
 
+    /**
+     * @var bool|null
+     */
+    private $sandboxMode;
+
+    /**
+     * @var Message|null
+     */
+    private $globals;
+
     public function __construct(array $input = [])
     {
         if (isset($input['Messages'])) {
@@ -16,6 +26,9 @@ final class SendEmailRequest
                 $this->messages[] = Message::create($message);
             }
         }
+
+        $this->sandboxMode = $input['SandboxMode'] ?? null;
+        $this->globals = isset($input['Globals']) ? Message::create($input['Globals']) : null;
     }
 
     public static function create($input): self
@@ -34,14 +47,14 @@ final class SendEmailRequest
             }
         }
 
-        return $payload;
-    }
+        if (null !== ($v = $this->sandboxMode)) {
+            $payload['SandboxMode'] = $v;
+        }
 
-    /**
-     * @return Message[]|null
-     */
-    public function getMessages(): ?array
-    {
-        return $this->messages;
+        if (null !== ($v = $this->globals)) {
+            $payload['Globals'] = $v->requestBody();
+        }
+
+        return $payload;
     }
 }

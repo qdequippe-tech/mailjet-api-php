@@ -16,6 +16,11 @@ final class SendEmailResponse
      */
     private $response;
 
+    /**
+     * @var bool
+     */
+    private $initialized = false;
+
     public function __construct(ResponseInterface $response)
     {
         $this->response = $response;
@@ -23,9 +28,7 @@ final class SendEmailResponse
 
     public function getMessages(): ?array
     {
-        $data = $this->response->toArray();
-
-        $this->populate($data);
+        $this->initialize();
 
         return $this->messages;
     }
@@ -39,5 +42,17 @@ final class SendEmailResponse
         foreach ($data['Messages'] as $message) {
             $this->messages[] = MessageResponse::create($message);
         }
+    }
+
+    private function initialize(): void
+    {
+        if ($this->initialized) {
+            return;
+        }
+
+        $data = $this->response->toArray();
+
+        $this->populate($data);
+        $this->initialized = true;
     }
 }
