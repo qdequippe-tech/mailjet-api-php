@@ -5,7 +5,6 @@
 [![Software License][badge-license]][license]
 [![PHP Version][badge-php]][php]
 [![Build Status][badge-build]][build]
-[![Coverage Status][badge-coverage]][coverage]
 [![Total Downloads][badge-downloads]][downloads]
 
 PHP client to interact with Mailjet API
@@ -54,7 +53,6 @@ more information.
 [badge-license]: https://img.shields.io/packagist/l/qdequippe/mailjet-api-php.svg?style=flat-square
 [badge-php]: https://img.shields.io/packagist/php-v/qdequippe/mailjet-api-php.svg?style=flat-square
 [badge-build]: https://github.com/qdequippe/mailjet-api-php/workflows/CI/badge.svg?branch=main
-[badge-coverage]: https://img.shields.io/coveralls/github/qdequippe/mailjet-api-php/main.svg?style=flat-square
 [badge-downloads]: https://img.shields.io/packagist/dt/qdequippe/mailjet-api-php.svg?style=flat-square&colorB=mediumvioletred
 
 [source]: https://github.com/qdequippe/mailjet-api-php
@@ -62,5 +60,4 @@ more information.
 [license]: https://github.com/qdequippe/mailjet-api-php/blob/main/LICENSE
 [php]: https://php.net
 [build]: https://github.com/qdequippe/mailjet-api-php/actions/workflows/ci.yaml
-[coverage]: https://coveralls.io/r/qdequippe/mailjet-api-php?branch=main
 [downloads]: https://packagist.org/packages/qdequippe/mailjet-api-php
