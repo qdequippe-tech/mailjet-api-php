@@ -7,7 +7,10 @@
 [![Build Status][badge-build]][build]
 [![Total Downloads][badge-downloads]][downloads]
 
-PHP client to interact with Mailjet API
+PHP client to interact with Mailjet API.
+
+This library is not official. [Official Mailjet PHP Wrapper](https://github.com/mailjet/mailjet-apiv3-php) 
+and [Official Documentation](https://dev.mailjet.com/guides/?php#getting-started).
 
 ## Installation
 
