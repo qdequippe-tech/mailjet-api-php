@@ -9,11 +9,6 @@
 
 PHP client to interact with Mailjet API
 
-This project adheres to a [Contributor Code of Conduct][conduct]. By
-participating in this project and its community, you are expected to uphold this
-code.
-
-
 ## Installation
 
 The preferred method of installation is via [Composer][]. Run the following
