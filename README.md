@@ -44,23 +44,23 @@ and licensed for use under the MIT License (MIT). Please see [LICENSE][] for
 more information.
 
 
-[conduct]: https://github.com/qdequippe/mailjet-api-php/blob/master/.github/CODE_OF_CONDUCT.md
+[conduct]: https://github.com/qdequippe/mailjet-api-php/blob/main/.github/CODE_OF_CONDUCT.md
 [composer]: http://getcomposer.org/
 [documentation]: https://qdequippe.github.io/mailjet-api-php/
-[contributing]: https://github.com/qdequippe/mailjet-api-php/blob/master/.github/CONTRIBUTING.md
+[contributing]: https://github.com/qdequippe/mailjet-api-php/blob/main/.github/CONTRIBUTING.md
 
 [badge-source]: http://img.shields.io/badge/source-qdequippe/mailjet--api--php-blue.svg?style=flat-square
 [badge-release]: https://img.shields.io/packagist/v/qdequippe/mailjet-api-php.svg?style=flat-square&label=release
 [badge-license]: https://img.shields.io/packagist/l/qdequippe/mailjet-api-php.svg?style=flat-square
 [badge-php]: https://img.shields.io/packagist/php-v/qdequippe/mailjet-api-php.svg?style=flat-square
-[badge-build]: https://img.shields.io/travis/qdequippe/mailjet-api-php/master.svg?style=flat-square
-[badge-coverage]: https://img.shields.io/coveralls/github/qdequippe/mailjet-api-php/master.svg?style=flat-square
+[badge-build]: https://img.shields.io/travis/qdequippe/mailjet-api-php/main.svg?style=flat-square
+[badge-coverage]: https://img.shields.io/coveralls/github/qdequippe/mailjet-api-php/main.svg?style=flat-square
 [badge-downloads]: https://img.shields.io/packagist/dt/qdequippe/mailjet-api-php.svg?style=flat-square&colorB=mediumvioletred
 
 [source]: https://github.com/qdequippe/mailjet-api-php
 [packagist]: https://packagist.org/packages/qdequippe/mailjet-api-php
-[license]: https://github.com/qdequippe/mailjet-api-php/blob/master/LICENSE
+[license]: https://github.com/qdequippe/mailjet-api-php/blob/main/LICENSE
 [php]: https://php.net
 [build]: https://travis-ci.org/qdequippe/mailjet-api-php
-[coverage]: https://coveralls.io/r/qdequippe/mailjet-api-php?branch=master
+[coverage]: https://coveralls.io/r/qdequippe/mailjet-api-php?branch=main
 [downloads]: https://packagist.org/packages/qdequippe/mailjet-api-php
