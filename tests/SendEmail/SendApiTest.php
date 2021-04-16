@@ -73,9 +73,10 @@ class SendApiTest extends TestCase
         ]);
 
         // Workaround to set mocked http client
-        (function () use ($client) {
-            return $this->httpClient = $client;
-        })->call($sendApi);
+        $reflection = new \ReflectionClass($sendApi);
+        $property = $reflection->getParentClass()->getProperty('httpClient');
+        $property->setAccessible(true);
+        $property->setValue($sendApi, $client);
 
         $sendEmailResponse = $sendApi->send($sendEmailRequest);
 
