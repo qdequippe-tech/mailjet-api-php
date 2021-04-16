@@ -1,12 +1,12 @@
 <?php
 
-namespace Qdequippe\Mailjet\Test;
+namespace Qdequippe\Mailjet\Tests\SendEmail;
 
-use Qdequippe\Mailjet\EmailAddress;
-use Qdequippe\Mailjet\Message;
-use Qdequippe\Mailjet\SendApi;
 use PHPUnit\Framework\TestCase;
-use Qdequippe\Mailjet\SendEmailRequest;
+use Qdequippe\Mailjet\SendEmail\EmailAddress;
+use Qdequippe\Mailjet\SendEmail\Message;
+use Qdequippe\Mailjet\SendEmail\SendApi;
+use Qdequippe\Mailjet\SendEmail\SendEmailRequest;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
@@ -14,7 +14,7 @@ class SendApiTest extends TestCase
 {
     public function testSend(): void
     {
-        $response = new MockResponse(file_get_contents(__DIR__.'/response_success.json'));
+        $response = new MockResponse(file_get_contents(__DIR__ . '/response_success.json'));
         $client = new MockHttpClient($response);
         $sendApi = new SendApi(null, null, $client);
 
@@ -31,9 +31,9 @@ class SendApiTest extends TestCase
                     ]),
                     'Subject' => 'Hello World!',
                     'TextPart' => 'Hello World!',
-                    'HTMLPart' => '<p>Hello World!</p>'
-                ])
-            ]
+                    'HTMLPart' => '<p>Hello World!</p>',
+                ]),
+            ],
         ]);
 
         $sendEmailResponse = $sendApi->send($sendEmailRequest);
@@ -46,7 +46,7 @@ class SendApiTest extends TestCase
 
     public function testSendWithoutClient(): void
     {
-        $response = new MockResponse(file_get_contents(__DIR__.'/response_success.json'));
+        $response = new MockResponse(file_get_contents(__DIR__ . '/response_success.json'));
         $client = new MockHttpClient($response);
         $sendApi = new SendApi();
         $sendApi->authenticate([
@@ -67,15 +67,16 @@ class SendApiTest extends TestCase
                     ]),
                     'Subject' => 'Hello World!',
                     'TextPart' => 'Hello World!',
-                    'HTMLPart' => '<p>Hello World!</p>'
-                ])
-            ]
+                    'HTMLPart' => '<p>Hello World!</p>',
+                ]),
+            ],
         ]);
 
         // Workaround to set mocked http client
-        (function () use ($client) {
-            return $this->httpClient = $client;
-        })->call($sendApi);
+        $reflection = new \ReflectionClass($sendApi);
+        $property = $reflection->getParentClass()->getProperty('httpClient');
+        $property->setAccessible(true);
+        $property->setValue($sendApi, $client);
 
         $sendEmailResponse = $sendApi->send($sendEmailRequest);
 

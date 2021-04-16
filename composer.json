@@ -19,6 +19,7 @@
         "symfony/http-client": "^4.4.16 || ^5.1.7"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.18",
         "phpunit/phpunit": "^8"
     },
     "autoload": {
@@ -28,7 +29,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Qdequippe\\Mailjet\\Test\\": "tests/"
+            "Qdequippe\\Mailjet\\Tests\\": "tests/"
         }
     },
     "config": {

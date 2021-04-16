@@ -4,8 +4,9 @@ namespace Qdequippe\Mailjet;
 
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
-class SendApi
+abstract class AbstractApi
 {
     /**
      * @var HttpClientInterface
@@ -41,19 +42,20 @@ class SendApi
         $this->privateApiKey = $credentials['privateApiKey'] ?? null;
     }
 
-    public function send($input): SendEmailResponse
+    final protected function request(string $method, string $uri, ?array $body = null): ResponseInterface
     {
-        $input = SendEmailRequest::create($input);
-
-        $response = $this->httpClient->request(
-            'POST',
-            sprintf('%s/v3.1/send', $this->baseUrl),
+        return $this->httpClient->request(
+            $method,
+            sprintf('%s/%s/%s', $this->baseUrl, $this->getVersion(), $uri),
             [
                 'auth_basic' => [$this->publicApiKey, $this->privateApiKey],
-                'json' => $input->requestBody(),
+                'json' => $body,
             ]
         );
+    }
 
-        return new SendEmailResponse($response);
+    protected function getVersion(): string
+    {
+        return 'v3';
     }
 }

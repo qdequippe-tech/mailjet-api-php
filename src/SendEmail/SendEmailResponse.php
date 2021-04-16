@@ -1,6 +1,6 @@
 <?php
 
-namespace Qdequippe\Mailjet;
+namespace Qdequippe\Mailjet\SendEmail;
 
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
