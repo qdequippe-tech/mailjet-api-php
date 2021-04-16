@@ -24,18 +24,6 @@ command to install the package and add it as a requirement to your project's
 composer require qdequippe/mailjet-api-php
 ```
 
-
-## Documentation
-
-Check out the [documentation website][documentation] for detailed information
-and code examples.
-
-
-## Contributing
-
-Contributions are welcome! Please read [CONTRIBUTING][] for details.
-
-
 ## Copyright and License
 
 The qdequippe/mailjet-api-php library is copyright © [Quentin Dequippe](https://dequippe.tech)
@@ -45,8 +33,6 @@ more information.
 
 [conduct]: https://github.com/qdequippe/mailjet-api-php/blob/main/.github/CODE_OF_CONDUCT.md
 [composer]: http://getcomposer.org/
-[documentation]: https://qdequippe.github.io/mailjet-api-php/
-[contributing]: https://github.com/qdequippe/mailjet-api-php/blob/main/.github/CONTRIBUTING.md
 
 [badge-source]: http://img.shields.io/badge/source-qdequippe/mailjet--api--php-blue.svg?style=flat-square
 [badge-release]: https://img.shields.io/packagist/v/qdequippe/mailjet-api-php.svg?style=flat-square&label=release
