@@ -1,6 +1,6 @@
 <?php
 
-namespace Qdequippe\Mailjet;
+namespace Qdequippe\Mailjet\SendEmail;
 
 class EmailAddress
 {

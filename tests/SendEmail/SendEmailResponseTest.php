@@ -1,9 +1,9 @@
 <?php
 
-namespace Qdequippe\Mailjet\Test;
+namespace Qdequippe\Mailjet\Tests\SendEmail;
 
-use Qdequippe\Mailjet\SendEmailResponse;
 use PHPUnit\Framework\TestCase;
+use Qdequippe\Mailjet\SendEmail\SendEmailResponse;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 
@@ -21,7 +21,7 @@ class SendEmailResponseTest extends TestCase
 
     public function testSendEmailResponseSuccess(): void
     {
-        $response = new MockResponse(file_get_contents(__DIR__.'/response_success.json'));
+        $response = new MockResponse(file_get_contents(__DIR__ . '/response_success.json'));
         $client = new MockHttpClient($response);
 
         $sendEmailResponse = new SendEmailResponse($client->request('POST', 'http://localhost'));
@@ -39,7 +39,7 @@ class SendEmailResponseTest extends TestCase
 
     public function testSendEmailResponseError(): void
     {
-        $response = new MockResponse(file_get_contents(__DIR__.'/response_error.json'));
+        $response = new MockResponse(file_get_contents(__DIR__ . '/response_error.json'));
         $client = new MockHttpClient($response);
 
         $sendEmailResponse = new SendEmailResponse($client->request('POST', 'http://localhost'));
@@ -51,7 +51,7 @@ class SendEmailResponseTest extends TestCase
         self::assertSame('b0c5e274-3b27-42ce-9295-b18dc67c35ca', $message->getErrors()[0]->getIdentifier()->toString());
         self::assertSame('mj-0004', $message->getErrors()[0]->getCode());
         self::assertSame(400, $message->getErrors()[0]->getStatusCode());
-        self::assertSame("Type mismatch. Expected type \"array of emails\".", $message->getErrors()[0]->getMessage());
+        self::assertSame('Type mismatch. Expected type "array of emails".', $message->getErrors()[0]->getMessage());
         self::assertSame(['HTMLPart', 'TemplateID'], $message->getErrors()[0]->getRelatedTo());
     }
 }

@@ -1,0 +1,25 @@
+{
+    "Count": 1,
+    "Data": [
+        {
+            "Author": "John Doe",
+            "Categories": "array",
+            "Copyright": "Mailjet",
+            "Description": "Used to send out promo codes.",
+            "EditMode": 1,
+            "IsStarred": false,
+            "IsTextPartGenerationEnabled": true,
+            "Locale": "en_US",
+            "Name": "Promo Codes",
+            "OwnerType": "user",
+            "Presets": "string",
+            "Purposes": "array",
+            "ID": 123456,
+            "OwnerId": 123456,
+            "Previews": "array",
+            "CreatedAt": "2018-01-01T00:00:00",
+            "LastUpdatedAt": "2018-01-01T00:00:00"
+        }
+    ],
+    "Total": 1
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Qdequippe\Mailjet;
+namespace Qdequippe\Mailjet\SendEmail;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
